@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".getRunnerInfo" />
-        <activity android:name=".GetTrackInfo"></activity>
+        <activity android:name=".GetTrackInfo" />
+        <activity android:name=".RunScreen"></activity>
     </application>
 
 </manifest>
