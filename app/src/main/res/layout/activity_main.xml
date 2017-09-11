@@ -33,12 +33,12 @@
         app:layout_constraintVertical_bias="0.281" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/mainContinue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_marginTop="63dp"
+        android:text="Continue"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="63dp"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 </android.support.constraint.ConstraintLayout>

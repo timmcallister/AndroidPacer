@@ -1,13 +1,38 @@
 package timsthings.pacer;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    Button mainContinueButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mainContinueButton = (Button) findViewById(R.id.mainContinue);
+        mainContinueButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        // this page only contains one button to acknowledge the front screen
+        // we simply have to build an Intent and open the page
+
+        switch (view.getId()){
+
+            case R.id.mainContinue:
+                Intent intent = new Intent(this, GetRunnerInfo.class);
+                startActivity(intent);
+                break;
+
+            default:
+                break;
+        }
     }
 }

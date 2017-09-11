@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".getRunnerInfo" />
+        <activity android:name=".GetRunnerInfo" />
         <activity android:name=".GetTrackInfo" />
         <activity android:name=".RunScreen"></activity>
     </application>
