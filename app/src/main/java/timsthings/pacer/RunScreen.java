@@ -14,6 +14,6 @@ public class RunScreen extends AppCompatActivity {
 
         //// TODO: 9/11/17 Display TGT lap and total times
 
-        //// TODO: 9/11/17 Implement core logic. 
+        //// TODO: 9/11/17 Implement core logic.
     }
 }
