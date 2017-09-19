@@ -39,13 +39,14 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
         switch (view.getId()){
             case R.id.startRecordButton:
                 if(stopWatch.getRunning()){             // determine if stopwatch is running
-                    
+
                 }
                 else {                                  // stopWatch not running
                     stopWatch.start();
                     stopWatch.setRunning(true);
+                    startRecord.setText("Record Lap");
                 }
-
+                break;
             default:
                 break;
         }
