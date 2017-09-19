@@ -21,7 +21,7 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
 
         runChrono = (Chronometer) findViewById(R.id.runChrono);
 
-        startRecord = (Button) findViewById(R.id.startRecord);
+        startRecord = (Button) findViewById(R.id.startRecordButton);
         startRecord.setOnClickListener(this);
 
         //// TODO: 9/11/17 Display TGT lap and total times
@@ -33,7 +33,7 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
     public void onClick(View view) {
 
         switch (view.getId()){
-            case R.id.runChrono:
+            case R.id.startRecordButton: 
                 runChrono.setBase(SystemClock.elapsedRealtime());
                 runChrono.start();
 
