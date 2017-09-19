@@ -22,7 +22,7 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_run_screen);
 
         time = new SimpleDateFormat("mm:ss");
-        runChrono = (Chronometer) findViewById(R.id.runChrono);
+        runChrono = (Chronometer) findViewById(R.id.chronoWidget);
 
         startRecord = (Button) findViewById(R.id.startRecordButton);
         startRecord.setOnClickListener(this);

@@ -11,7 +11,7 @@
     tools:context="timsthings.pacer.RunScreen">
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/lapTimeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Chronometer
-        android:id="@+id/runChrono"
+        android:id="@+id/chronoWidget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
@@ -30,10 +30,10 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/lapTimeLabel" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/targetLapLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -41,10 +41,10 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/runChrono" />
+        app:layout_constraintTop_toBottomOf="@+id/chronoWidget" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/lapTimeView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -52,7 +52,7 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/predictedRunTimeLabel" />
 
     <Button
         android:id="@+id/startRecordButton"
@@ -60,16 +60,16 @@
         android:layout_width="141dp"
         android:layout_height="73dp"
         android:layout_marginTop="8dp"
-        android:text="Record Lap"
+        android:text="Start Run"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/targetRunTimeView"
         app:layout_constraintVertical_bias="0.081" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/predictedRunTimeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -80,7 +80,7 @@
         app:layout_constraintTop_toBottomOf="@+id/startRecordButton" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/predictedRunTimeView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -88,10 +88,10 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/targetRunTimeLabel" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/targetRunTimeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -99,10 +99,10 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/lapTimeView" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/targetRunTimeView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -110,26 +110,42 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/targetLapLabel" />
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/pauseButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Pause" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/resetButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Reset" />
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/testDisplayLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Test Display" />
+
+    <TextView
+        android:id="@+id/testDisplayView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="TextView"
+        tools:text="mm:ss" />
 
 </LinearLayout>
