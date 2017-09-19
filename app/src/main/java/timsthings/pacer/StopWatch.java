@@ -34,7 +34,7 @@ public class StopWatch extends Chronometer {
 
     @Override
     public void start() {
-        setBase(SystemClock.elapsedRealtime() + timeWhenPaused);
+        setBase(SystemClock.elapsedRealtime() - timeWhenPaused);
         super.start();
     }
 

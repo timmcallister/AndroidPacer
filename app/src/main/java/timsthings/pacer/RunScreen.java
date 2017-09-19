@@ -11,11 +11,8 @@ import android.widget.Chronometer;
 public class RunScreen extends AppCompatActivity implements View.OnClickListener {
 
     Button startRecord, resetPause;
-    Chronometer runChrono;
     SimpleDateFormat timeFormatter;
     StopWatch stopWatch;
-
-    long startTime, startLap, lapTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +48,7 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
                     stopWatch.setRunning(false);
                     stopWatch.stop();
                     resetPause.setText(R.string.reset);
+                    startRecord.setText(R.string.resume);
                 }
                 else {                                  // stopwatch not running (reset)
                     stopWatch.reset();
