@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.41" />
 
     <Chronometer
-        android:id="@+id/chronometer2"
+        android:id="@+id/runChrono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="46dp"
