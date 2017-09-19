@@ -49,7 +49,7 @@ public class StopWatch extends Chronometer {
         timeWhenPaused = 0;
     }
 
-    public long getTimeWhenPaused{
+    public long getTimeWhenPaused(){
         return timeWhenPaused;
     }
 
