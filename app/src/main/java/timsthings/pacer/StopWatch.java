@@ -13,6 +13,7 @@ import android.widget.Chronometer;
 
 public class StopWatch extends Chronometer {
 
+    boolean isRunning;
     long timeWhenPaused = 0;
 
     public StopWatch(Context context) {
@@ -56,5 +57,13 @@ public class StopWatch extends Chronometer {
     public void setTimeWhenPaused(long time){
         timeWhenPaused = time;
         setBase(SystemClock.elapsedRealtime() - timeWhenPaused);
+    }
+
+    public Boolean getRunning() {
+        return isRunning;
+    }
+
+    public void setRunning(Boolean running) {
+        isRunning = running;
     }
 }

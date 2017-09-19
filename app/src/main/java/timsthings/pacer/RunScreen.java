@@ -12,7 +12,8 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
 
     Button startRecord;
     Chronometer runChrono;
-    SimpleDateFormat time;
+    SimpleDateFormat timeFormatter;
+    StopWatch stopWatch;
 
     long startTime, startLap, lapTime;
 
@@ -21,11 +22,11 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_run_screen);
 
-        time = new SimpleDateFormat("mm:ss");
-        runChrono = (Chronometer) findViewById(R.id.chronoWidget);
-
+        timeFormatter = new SimpleDateFormat("mm:ss");
+        stopWatch = (StopWatch) findViewById(R.id.chronoWidget);
         startRecord = (Button) findViewById(R.id.startRecordButton);
         startRecord.setOnClickListener(this);
+
 
         //// TODO: 9/11/17 Display TGT lap and total times
 
@@ -37,8 +38,13 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
 
         switch (view.getId()){
             case R.id.startRecordButton:
-                runChrono.setBase(SystemClock.elapsedRealtime());
-                runChrono.start();
+                if(stopWatch.getRunning()){             // determine if stopwatch is running
+                    
+                }
+                else {                                  // stopWatch not running
+                    stopWatch.start();
+                    stopWatch.setRunning(true);
+                }
 
             default:
                 break;
