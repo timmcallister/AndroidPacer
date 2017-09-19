@@ -10,7 +10,7 @@ import android.widget.Chronometer;
 
 public class RunScreen extends AppCompatActivity implements View.OnClickListener {
 
-    Button startRecord;
+    Button startRecord, resetPause;
     Chronometer runChrono;
     SimpleDateFormat timeFormatter;
     StopWatch stopWatch;
@@ -25,12 +25,10 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
         timeFormatter = new SimpleDateFormat("mm:ss");
         stopWatch = (StopWatch) findViewById(R.id.chronoWidget);
         startRecord = (Button) findViewById(R.id.startRecordButton);
+        resetPause = (Button) findViewById(R.id.resetPauseButton);
         startRecord.setOnClickListener(this);
+        resetPause.setOnClickListener(this);
 
-
-        //// TODO: 9/11/17 Display TGT lap and total times
-
-        //// TODO: 9/11/17 Implement core logic.
     }
 
     @Override
@@ -38,13 +36,26 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
 
         switch (view.getId()){
             case R.id.startRecordButton:
-                if(stopWatch.getRunning()){             // determine if stopwatch is running
-
+                if(stopWatch.getRunning()){             // stopwatch is running (record lap)
+                    // TODO: 9/19/17 Implement record Lap
                 }
-                else {                                  // stopWatch not running
+                else {                                  // stopwatch not running (start run)
                     stopWatch.start();
                     stopWatch.setRunning(true);
-                    startRecord.setText("Record Lap");
+                    startRecord.setText(R.string.record_lap);
+                    resetPause.setText(R.string.pause);
+                }
+                break;
+            case R.id.resetPauseButton:
+                if(stopWatch.getRunning()){             // stopwatch is running, (pause)
+                    stopWatch.setRunning(false);
+                    stopWatch.stop();
+                    resetPause.setText(R.string.reset);
+                }
+                else {                                  // stopwatch not running (reset)
+                    stopWatch.reset();
+                    startRecord.setText(R.string.start_run);
+                    // TODO: 9/19/17 Implement Run Reset
                 }
                 break;
             default:
