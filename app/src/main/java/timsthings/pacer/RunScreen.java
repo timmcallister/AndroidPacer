@@ -1,5 +1,6 @@
 package timsthings.pacer;
 
+import java.text.SimpleDateFormat;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
 
     Button startRecord;
     Chronometer runChrono;
+    SimpleDateFormat time;
 
     long startTime, startLap, lapTime;
 
@@ -19,6 +21,7 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_run_screen);
 
+        time = new SimpleDateFormat("mm:ss");
         runChrono = (Chronometer) findViewById(R.id.runChrono);
 
         startRecord = (Button) findViewById(R.id.startRecordButton);
@@ -33,7 +36,7 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
     public void onClick(View view) {
 
         switch (view.getId()){
-            case R.id.startRecordButton: 
+            case R.id.startRecordButton:
                 runChrono.setBase(SystemClock.elapsedRealtime());
                 runChrono.start();
 
