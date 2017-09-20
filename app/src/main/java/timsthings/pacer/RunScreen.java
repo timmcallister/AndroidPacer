@@ -1,12 +1,10 @@
 package timsthings.pacer;
 
 import java.text.SimpleDateFormat;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Chronometer;
 
 public class RunScreen extends AppCompatActivity implements View.OnClickListener {
 
