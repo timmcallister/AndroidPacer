@@ -3,7 +3,6 @@ package timsthings.pacer;
 import java.text.SimpleDateFormat;
 
 import android.content.Context;
-import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -61,7 +60,7 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
                         lapTimeView.setBackgroundColor(ContextCompat.getColor(this, R.color.colorWarning));
                     else if (run.getCurrentLap() == 20){
                         lapTimeView.setBackgroundColor(ContextCompat.getColor(this, R.color.colorCaution));
-                        //vibrator.vibrate(750);
+                        vibrator.vibrate(750);
                     }
                     else
                         lapTimeView.setBackgroundColor(0x00000000);
