@@ -14,7 +14,7 @@
         android:id="@+id/lapTimeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:text="Lap Time"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintHorizontal_bias="0.501"
