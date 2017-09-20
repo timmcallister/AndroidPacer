@@ -16,10 +16,20 @@ public class Run {
     private long targetTotalTime;
     private long predictedTotalTime;
 
-    public Run(boolean partialLap, int numLaps, long predictedLapTime) {
-        this.partialLap = partialLap;
-        this.numLaps = numLaps;
-        this.predictedLapTime = predictedLapTime;
+//    public Run(boolean partialLap, int numLaps, long predictedLapTime) {
+//        this.partialLap = partialLap;
+//        this.numLaps = numLaps;
+//        this.predictedLapTime = predictedLapTime;
+//    }
+
+    // TODO: 9/20/17 Remove this
+    // Begin testing verion
+    public Run(){
+        this.currentLap = 0;
+    }
+
+    public void incrementLap(){
+        this.currentLap++;
     }
 
     public boolean isPartialLap() {
