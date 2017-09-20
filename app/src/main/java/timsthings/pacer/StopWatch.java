@@ -59,6 +59,10 @@ public class StopWatch extends Chronometer {
         setBase(SystemClock.elapsedRealtime() - timeWhenPaused);
     }
 
+    public long getTime(){
+        return SystemClock.elapsedRealtime() - getBase();
+    }
+
     public Boolean getRunning() {
         return isRunning;
     }

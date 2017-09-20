@@ -5,12 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class RunScreen extends AppCompatActivity implements View.OnClickListener {
 
     Button startRecord, resetPause;
     SimpleDateFormat timeFormatter;
     StopWatch stopWatch;
+    TextView testView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,9 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
         startRecord.setOnClickListener(this);
         resetPause.setOnClickListener(this);
 
+        // for testing purposes
+        testView = (TextView) findViewById(R.id.testDisplayView);
+
     }
 
     @Override
@@ -33,6 +38,11 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
             case R.id.startRecordButton:
                 if(stopWatch.getRunning()){             // stopwatch is running (record lap)
                     // TODO: 9/19/17 Implement record Lap
+                    // start testing
+                    testView.setText(timeFormatter.format(stopWatch.getTime()));
+                    // stop testing
+                    stopWatch.reset();
+                    stopWatch.start();
                 }
                 else {                                  // stopwatch not running (start run)
                     stopWatch.start();
