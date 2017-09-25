@@ -56,14 +56,20 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
                     testView.setText(timeFormatter.format(stopWatch.getTime()));
                     run.incrementLap();
                     lapView.setText(String.valueOf(run.getCurrentLap()));
-                    if(run.getCurrentLap() == 13)
-                        lapTimeView.setBackgroundColor(ContextCompat.getColor(this, R.color.colorWarning));
+                    if(run.getCurrentLap() == 13) {
+                        lapView.setBackgroundColor(ContextCompat.getColor(this, R.color.colorWarning));
+                        lapView.setText("ABC");
+                    }
                     else if (run.getCurrentLap() == 20){
                         lapTimeView.setBackgroundColor(ContextCompat.getColor(this, R.color.colorCaution));
+                        lapTimeView.setText("Test message");
                         vibrator.vibrate(750);
                     }
-                    else
+                    else {
                         lapTimeView.setBackgroundColor(0x00000000);
+                        lapView.setBackgroundColor(0x00000000);
+                        lapTimeView.setText("MM:SS");
+                    }
                     //stop testing
                     stopWatch.reset();
                     stopWatch.start();

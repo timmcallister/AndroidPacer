@@ -1,5 +1,7 @@
 package timsthings.pacer;
 
+import java.util.ArrayList;
+
 /**
  * Created by tim on 9/15/17.
  */
@@ -15,17 +17,15 @@ public class Run {
     private long totalTime;
     private long targetTotalTime;
     private long predictedTotalTime;
+    private ArrayList<long> laps;
 
-//    public Run(boolean partialLap, int numLaps, long predictedLapTime) {
-//        this.partialLap = partialLap;
-//        this.numLaps = numLaps;
-//        this.predictedLapTime = predictedLapTime;
-//    }
+
 
     // TODO: 9/20/17 Remove this
     // Begin testing verion
     public Run(){
-        this.currentLap = 0;
+        laps = new ArrayList<long>();
+        setCurrentLap(0);
     }
 
     public void incrementLap(){
