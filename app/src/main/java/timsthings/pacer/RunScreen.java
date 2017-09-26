@@ -19,6 +19,7 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
     TextView testView;
     TextView lapView;
     TextView lapTimeView;
+    TextView predictedTimeView;
     Run run;
     Vibrator vibrator;
 
@@ -41,6 +42,7 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
         testView = (TextView) findViewById(R.id.testDisplayView);
         lapView = (TextView) findViewById(R.id.lapNumberView);
         lapTimeView = (TextView) findViewById(R.id.lapTimeView);
+        predictedTimeView = (TextView) findViewById(R.id.predictedRunTimeView);
 
 
     }
@@ -56,35 +58,38 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
                     testView.setText(timeFormatter.format(stopWatch.getTime()));
                     run.incrementLap();
                     lapView.setText(String.valueOf(run.getCurrentLap()));
-                    if(run.getCurrentLap() == 13) {
-                        lapView.setBackgroundColor(ContextCompat.getColor(this, R.color.colorWarning));
-                        lapView.setText("ABC");
-                    }
-                    else if (run.getCurrentLap() == 20){
-                        lapTimeView.setBackgroundColor(ContextCompat.getColor(this, R.color.colorCaution));
-                        lapTimeView.setText("Test message");
-                        vibrator.vibrate(750);
-                    }
-                    else {
-                        lapTimeView.setBackgroundColor(0x00000000);
-                        lapView.setBackgroundColor(0x00000000);
-                        lapTimeView.setText("MM:SS");
-                    }
+//                    if(run.getCurrentLap() == 13) {
+//                        lapView.setBackgroundColor(ContextCompat.getColor(this, R.color.colorWarning));
+//                        lapView.setText("ABC");
+//                    }
+//                    else if (run.getCurrentLap() == 20){
+//                        lapTimeView.setBackgroundColor(ContextCompat.getColor(this, R.color.colorCaution));
+//                        lapTimeView.setText("Test message");
+//                        vibrator.vibrate(750);
+//                    }
+//                    else {
+//                        lapTimeView.setBackgroundColor(0x00000000);
+//                        lapView.setBackgroundColor(0x00000000);
+//                        lapTimeView.setText("MM:SS");
+//                    }
                     //stop testing
+                    stopWatch.addLap();
+                    run.addLap(stopWatch.getTotalTime());
                     stopWatch.reset();
                     stopWatch.start();
+
+                    if(run.getCurrentLap() > 2)
+                        predictedTimeView.setText(timeFormatter.format(run.predictRunTime()));
 
                 }
                 else {                                  // stopwatch not running (start run)
                     stopWatch.start();
-                    stopWatch.setRunning(true);
                     startRecord.setText(R.string.record_lap);
                     resetPause.setText(R.string.pause);
                 }
                 break;
             case R.id.resetPauseButton:
                 if(stopWatch.getRunning()){             // stopwatch is running, (pause)
-                    stopWatch.setRunning(false);
                     stopWatch.stop();
                     resetPause.setText(R.string.reset);
                     startRecord.setText(R.string.resume);
@@ -94,9 +99,8 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
                     startRecord.setText(R.string.start_run);
                     // TODO: 9/19/17 Implement Run Reset
                     // TODO: 9/20/17 remove this
-                    run.setCurrentLap(0);
+                    run.resetRun();
                     lapView.setText(String.valueOf(run.getCurrentLap()));
-
                 }
                 break;
             default:

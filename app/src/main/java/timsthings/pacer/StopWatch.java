@@ -13,8 +13,9 @@ import android.widget.Chronometer;
 
 public class StopWatch extends Chronometer {
 
-    boolean isRunning;
+    boolean isRunning = false;
     long timeWhenPaused = 0;
+    long totalTime = 0;
 
     public StopWatch(Context context) {
         super(context);
@@ -36,18 +37,26 @@ public class StopWatch extends Chronometer {
     public void start() {
         setBase(SystemClock.elapsedRealtime() - timeWhenPaused);
         super.start();
+        this.setRunning(true);
     }
 
     @Override
     public void stop() {
         super.stop();
+        this.setRunning(false);
         timeWhenPaused = SystemClock.elapsedRealtime() - getBase();
     }
 
     public void reset(){
         stop();
+        this.setRunning(false);
         setBase(SystemClock.elapsedRealtime());
         timeWhenPaused = 0;
+        totalTime = 0;
+    }
+
+    public void addLap(){
+        totalTime += getTime();
     }
 
     public long getTimeWhenPaused(){
@@ -61,6 +70,10 @@ public class StopWatch extends Chronometer {
 
     public long getTime(){
         return SystemClock.elapsedRealtime() - getBase();
+    }
+
+    public long getTotalTime() {
+        return totalTime;
     }
 
     public Boolean getRunning() {
