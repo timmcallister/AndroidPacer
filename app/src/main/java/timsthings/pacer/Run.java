@@ -9,39 +9,29 @@ import java.util.ArrayList;
 public class Run {
 
     private boolean partialLap;
-    private int currentLap;
-    private int numLaps;
-    private long currentLapTime;
-    private long targetLapTime;
-    private long predictedLapTime;
-    private long totalTime;
-    private long targetTotalTime;
-    private long predictedTotalTime;
+    private long partialTime;
     private ArrayList<Long> laps;
 
 
     // TODO: 9/20/17 Remove this
-    // Begin testing verion
+    // Begin testing version
     public Run() {
         laps = new ArrayList<>();
-        this.currentLap = 0;
     }
 
     public void addLap(Long lap) {
         laps.add(lap);
-        this.currentLap++;
     }
 
     public void resetRun() {
         laps.clear();
-        this.currentLap = 0;
     }
 
     // Calculates linear regression and forecasts total run time
     public long predictRunTime() {
 
         // TODO: 9/26/17 remove this test value
-        int testLaps = 24;
+        double testLaps = 23;
         long predictedTime;
 
         double sampleMeanX = getSampleMeanX(laps.size());
@@ -53,6 +43,8 @@ public class Run {
 
         predictedTime = (long) ((slope * testLaps) + yIntercept);
 
+        predictedTime += partialTime;
+
         return predictedTime;
 
     }
@@ -63,7 +55,7 @@ public class Run {
         double dividend = 0;
         double divisor = 0;
 
-        for (int i = 1; i < laps.size(); i++) {
+        for (int i = 0; i < laps.size(); i++) {
             dividend += (i - sampleX) * (laps.get(i) - sampleY);
             divisor += Math.pow((i - sampleX), 2);
         }
@@ -90,20 +82,11 @@ public class Run {
         for (Long num : laps)
             sum += num;
 
-        return sum / this.currentLap;
-    }
-
-
-    public void incrementLap() {
-        this.currentLap++;
+        return sum / laps.size();
     }
 
     public boolean isPartialLap() {
         return partialLap;
-    }
-
-    public void setPartialLap(boolean partialLap) {
-        this.partialLap = partialLap;
     }
 
     public int getCurrentLap() {
