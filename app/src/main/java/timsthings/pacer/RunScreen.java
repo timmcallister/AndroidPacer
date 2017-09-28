@@ -53,14 +53,15 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
         switch (view.getId()){
             case R.id.startRecordButton:
                 if(stopWatch.getRunning()){             // stopwatch is running (record lap)
-                    stopWatch.addLap();
 
-                    if(run.isPartialLap() == false || run.getCurrentLap() != 1)
-                        run.addLap(stopWatch.getTime());
+                    if(!run.isPartialLap() || run.getCurrentLap() != 1)
+                        run.addLap(stopWatch.getTotalTime());
 
-                    testView.setText(timeFormatter.format(stopWatch.getTotalTime()));
+                    testView.setText(timeFormatter.format(stopWatch.getTime()));
                     lapDisplayNumber++;
-                    lapView.setText(String.valueOf(lapDisplayNumber));
+
+                    //// TODO: 9/28/17 change this back
+                    lapView.setText(timeFormatter.format(stopWatch.getTotalTime()));
                     stopWatch.reset();
                     stopWatch.start();
 

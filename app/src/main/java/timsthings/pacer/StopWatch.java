@@ -55,25 +55,13 @@ public class StopWatch extends Chronometer {
         totalTime = 0;
     }
 
-    public void addLap(){
+    public long getTotalTime(){
         totalTime += getTime();
-    }
-
-    public long getTimeWhenPaused(){
-        return timeWhenPaused;
-    }
-
-    public void setTimeWhenPaused(long time){
-        timeWhenPaused = time;
-        setBase(SystemClock.elapsedRealtime() - timeWhenPaused);
+        return totalTime;
     }
 
     public long getTime(){
         return SystemClock.elapsedRealtime() - getBase();
-    }
-
-    public long getTotalTime() {
-        return totalTime;
     }
 
     public Boolean getRunning() {
