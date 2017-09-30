@@ -34,11 +34,11 @@
         app:layout_constraintTop_toBottomOf="@+id/lapTimeLabel" />
 
     <TextView
-        android:id="@+id/targetLapLabel"
+        android:id="@+id/predictedLapLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Target Lap Time"
+        android:text="Predicted Run Time"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -46,17 +46,17 @@
         app:layout_constraintTop_toBottomOf="@+id/chronoWidget" />
 
     <TextView
-        android:id="@+id/lapTimeView"
+        android:id="@+id/predictedTimeView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="MM:SS"
+        android:text="00:00"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/predictedRunTimeLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/targetLapTimeLabel" />
 
     <Button
         android:id="@+id/startRecordButton"
@@ -73,11 +73,11 @@
         app:layout_constraintVertical_bias="0.081" />
 
     <TextView
-        android:id="@+id/predictedRunTimeLabel"
+        android:id="@+id/targetLapTimeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Predicted Run Time"
+        android:text="Target Avg. Lap Time"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -85,7 +85,7 @@
         app:layout_constraintTop_toBottomOf="@+id/startRecordButton" />
 
     <TextView
-        android:id="@+id/predictedRunTimeView"
+        android:id="@+id/targetLapTimeView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -106,7 +106,7 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lapTimeView" />
+        app:layout_constraintTop_toBottomOf="@+id/predictedTimeView" />
 
     <TextView
         android:id="@+id/targetRunTimeView"
@@ -118,7 +118,7 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/targetLapLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/predictedLapLabel" />
 
     <Button
         android:id="@+id/resetPauseButton"
@@ -138,16 +138,16 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/testDisplayLabel"
+                android:id="@+id/lastLapTimeLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
+                android:gravity="bottom|center_horizontal"
                 android:text="Last Lap Time"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <TextView
-                android:id="@+id/testDisplayView"
+                android:id="@+id/lastLapTimeView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -166,8 +166,8 @@
                 android:id="@+id/lapNumberLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
                 android:layout_weight="1"
+                android:gravity="bottom|center_horizontal"
                 android:text="Lap Number"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 

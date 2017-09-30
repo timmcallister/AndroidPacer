@@ -52,12 +52,14 @@ public class StopWatch extends Chronometer {
         this.setRunning(false);
         setBase(SystemClock.elapsedRealtime());
         timeWhenPaused = 0;
-        totalTime = 0;
     }
 
     public long getTotalTime(){
-        totalTime += getTime();
         return totalTime;
+    }
+
+    public void addLap(){
+        totalTime += getTime();
     }
 
     public long getTime(){
@@ -70,5 +72,9 @@ public class StopWatch extends Chronometer {
 
     public void setRunning(Boolean running) {
         isRunning = running;
+    }
+
+    public void setTotalTime(long time){
+        this.totalTime = time;
     }
 }

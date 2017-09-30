@@ -56,8 +56,8 @@ public class Run {
         double divisor = 0;
 
         for (int i = 0; i < laps.size(); i++) {
-            dividend += (i - sampleX) * (laps.get(i) - sampleY);
-            divisor += Math.pow((i - sampleX), 2);
+            dividend += ((i + 1) - sampleX) * (laps.get(i) - sampleY);
+            divisor += Math.pow(((i + 1) - sampleX), 2);
         }
 
         return dividend / divisor;

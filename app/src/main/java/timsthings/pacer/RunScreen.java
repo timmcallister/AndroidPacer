@@ -15,7 +15,7 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
     Button startRecord, resetPause;
     SimpleDateFormat timeFormatter;
     StopWatch stopWatch;
-    TextView testView;
+    TextView lastLapTimeView;
     TextView lapView;
     TextView lapTimeView;
     TextView predictedTimeView;
@@ -39,10 +39,9 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
         resetPause.setOnClickListener(this);
 
         // for testing purposes
-        testView = (TextView) findViewById(R.id.testDisplayView);
+        lastLapTimeView = (TextView) findViewById(R.id.lastLapTimeView);
         lapView = (TextView) findViewById(R.id.lapNumberView);
-        lapTimeView = (TextView) findViewById(R.id.lapTimeView);
-        predictedTimeView = (TextView) findViewById(R.id.predictedRunTimeView);
+        predictedTimeView = (TextView) findViewById(R.id.predictedTimeView);
         lapDisplayNumber = 0;
 
     }
@@ -54,14 +53,15 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
             case R.id.startRecordButton:
                 if(stopWatch.getRunning()){             // stopwatch is running (record lap)
 
+                    stopWatch.addLap();
+
                     if(!run.isPartialLap() || run.getCurrentLap() != 1)
                         run.addLap(stopWatch.getTotalTime());
 
-                    testView.setText(timeFormatter.format(stopWatch.getTime()));
+                    lastLapTimeView.setText(timeFormatter.format(stopWatch.getTotalTime()));
                     lapDisplayNumber++;
 
-                    //// TODO: 9/28/17 change this back
-                    lapView.setText(timeFormatter.format(stopWatch.getTotalTime()));
+                    lapView.setText(String.valueOf(lapDisplayNumber));
                     stopWatch.reset();
                     stopWatch.start();
 
@@ -86,8 +86,11 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
                     startRecord.setText(R.string.start_run);
                     run.resetRun();
                     lapDisplayNumber = 0;
+                    stopWatch.setTotalTime(0);
                     lapView.setText(String.valueOf(lapDisplayNumber));
-                    testView.setText(timeFormatter.format(stopWatch.getTime()));
+                    lastLapTimeView.setText(timeFormatter.format(stopWatch.getTime()));
+                    predictedTimeView.setText("00:00");
+
 
                 }
                 break;
