@@ -17,7 +17,6 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
     StopWatch stopWatch;
     TextView lastLapTimeView;
     TextView lapView;
-    TextView lapTimeView;
     TextView predictedTimeView;
     Run run;
     Vibrator vibrator;
