@@ -21,8 +21,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        // this page only contains one button to acknowledge the front screen
-        // we simply have to build an Intent and open the page
 
         switch (view.getId()){
 

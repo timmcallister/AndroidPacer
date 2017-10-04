@@ -27,20 +27,22 @@ public class RunScreen extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_run_screen);
 
+        run = ((Run) getApplicationContext());
+
         timeFormatter = new SimpleDateFormat("mm:ss");
-        run = new Run();
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
+        // attaching views to program objects
         stopWatch = (StopWatch) findViewById(R.id.chronoWidget);
         startRecord = (Button) findViewById(R.id.startRecordButton);
         resetPause = (Button) findViewById(R.id.resetPauseButton);
         startRecord.setOnClickListener(this);
         resetPause.setOnClickListener(this);
-
-        // for testing purposes
         lastLapTimeView = (TextView) findViewById(R.id.lastLapTimeView);
         lapView = (TextView) findViewById(R.id.lapNumberView);
         predictedTimeView = (TextView) findViewById(R.id.predictedTimeView);
+
+        // this number is for the display only. It could be different than the Run laps.
         lapDisplayNumber = 0;
 
     }

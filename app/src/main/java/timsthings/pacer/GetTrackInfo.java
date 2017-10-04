@@ -5,30 +5,51 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
 public class GetTrackInfo extends AppCompatActivity implements View.OnClickListener {
 
     Button trackContinueButton;
+    CheckBox partialLapChk;
+    TextView numLaps;
+    int laps;
+    Run run;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_track_info);
 
+        run = ((Run) getApplicationContext());
+
+        laps = 0;
+        numLaps = (TextView) findViewById(R.id.numberLaps);
+        partialLapChk = (CheckBox) findViewById(R.id.partialLapCheck);
         trackContinueButton = (Button) findViewById(R.id.trackContinue);
         trackContinueButton.setOnClickListener(this);
+
+
     }
 
     @Override
     public void onClick(View view) {
-
-        //// TODO: 9/11/17 Implement track setup, create target laps
         
         switch (view.getId()){
 
             case R.id.trackContinue:
+
+                laps = Integer.parseInt(numLaps.getText().toString());
+
+                if(partialLapChk.isChecked())
+                    laps -= 1;
+
+                run.setRunLaps((double) laps);
+
+
                 Intent intent = new Intent(this, RunScreen.class);
                 startActivity(intent);
+                break;
 
             default:
                 break;

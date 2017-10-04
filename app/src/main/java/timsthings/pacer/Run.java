@@ -1,22 +1,23 @@
 package timsthings.pacer;
 
+import android.app.Application;
+
 import java.util.ArrayList;
 
 /**
  * Created by tim on 9/15/17.
  */
 
-public class Run {
+public class Run extends Application{
 
     private boolean partialLap;
-    private long partialTime;
+    private double runLaps;
     private ArrayList<Long> laps;
 
 
-    // TODO: 9/20/17 Remove this
     // Begin testing version
     public Run() {
-        laps = new ArrayList<>();
+        this.laps = new ArrayList<>();
     }
 
     public void addLap(Long lap) {
@@ -30,8 +31,6 @@ public class Run {
     // Calculates linear regression and forecasts total run time
     public long predictRunTime() {
 
-        // TODO: 9/26/17 remove this test value
-        double testLaps = 23;
         long predictedTime;
 
         double sampleMeanX = getSampleMeanX(laps.size());
@@ -41,9 +40,7 @@ public class Run {
 
         double yIntercept = getYIntercept(sampleMeanX, sampleMeanY, slope);
 
-        predictedTime = (long) ((slope * testLaps) + yIntercept);
-
-        predictedTime += partialTime;
+        predictedTime = (long) ((slope * runLaps) + yIntercept);
 
         return predictedTime;
 
@@ -93,7 +90,10 @@ public class Run {
         return laps.size();
     }
 
+    public void setRunLaps(double runLaps) {
 
+        this.runLaps = runLaps;
+    }
 }
 
 

@@ -10,6 +10,7 @@ public class GetRunnerInfo extends AppCompatActivity implements View.OnClickList
 
     Button runnerContinueButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
