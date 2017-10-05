@@ -12,10 +12,10 @@ public class Run extends Application{
 
     private boolean partialLap;
     private double runLaps;
+    private String targetTime;
     private ArrayList<Long> laps;
 
 
-    // Begin testing version
     public Run() {
         this.laps = new ArrayList<>();
     }
@@ -93,6 +93,14 @@ public class Run extends Application{
     public void setRunLaps(double runLaps) {
 
         this.runLaps = runLaps;
+    }
+
+    public String getTargetTime() {
+        return targetTime;
+    }
+
+    public void setTargetTime(String targetTime) {
+        this.targetTime = targetTime;
     }
 }
 

@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="maleTargets">
-
+        <item>13:14</item>
+        <item>13:14</item>
+        <item>14:25</item>
+        <item>15:50</item>
+        <item>17:34</item>
     </string-array>
     <string-array name="femaleTargets">
-
-
+        <item>15:50</item>
+        <item>15:50</item>
+        <item>18:14</item>
+        <item>19:43</item>
+        <item>21:28</item>
     </string-array>
 </resources>
