@@ -3,6 +3,7 @@ package timsthings.pacer;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -39,20 +40,26 @@ public class GetTrackInfo extends AppCompatActivity implements View.OnClickListe
 
             case R.id.trackContinue:
 
-                laps = Integer.parseInt(numLaps.getText().toString());
+                if(validateLaps()) {
+                    laps = Integer.parseInt(numLaps.getText().toString());
 
-                if(partialLapChk.isChecked())
-                    laps -= 1;
+                    if (partialLapChk.isChecked())
+                        laps -= 1;
 
-                run.setRunLaps((double) laps);
+                    run.setRunLaps((double) laps);
 
 
-                Intent intent = new Intent(this, RunScreen.class);
-                startActivity(intent);
+                    Intent intent = new Intent(this, RunScreen.class);
+                    startActivity(intent);
+                }
                 break;
 
             default:
                 break;
         }
+    }
+
+    private boolean validateLaps(){
+        return !(numLaps.getText().toString().isEmpty());
     }
 }
