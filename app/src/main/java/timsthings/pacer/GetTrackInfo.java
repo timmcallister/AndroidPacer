@@ -47,7 +47,7 @@ public class GetTrackInfo extends AppCompatActivity implements View.OnClickListe
                         laps -= 1;
 
                     run.setRunLaps((double) laps);
-
+                    run.setPartialLap(partialLapChk.isChecked());
 
                     Intent intent = new Intent(this, RunScreen.class);
                     startActivity(intent);

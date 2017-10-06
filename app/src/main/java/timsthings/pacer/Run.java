@@ -2,19 +2,20 @@ package timsthings.pacer;
 
 import android.app.Application;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by tim on 9/15/17.
  */
 
-public class Run extends Application{
+public class Run extends Application {
 
     private boolean partialLap;
     private double runLaps;
     private String targetTime;
     private ArrayList<Long> laps;
-
 
     public Run() {
         this.laps = new ArrayList<>();
@@ -86,6 +87,10 @@ public class Run extends Application{
         return partialLap;
     }
 
+    public void setPartialLap(boolean partialLap) {
+        this.partialLap = partialLap;
+    }
+
     public int getCurrentLap() {
         return laps.size();
     }
@@ -103,6 +108,8 @@ public class Run extends Application{
         this.targetTime = targetTime;
     }
 }
+
+
 
 
 

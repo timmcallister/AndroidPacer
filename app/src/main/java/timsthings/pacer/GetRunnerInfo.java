@@ -18,6 +18,7 @@ public class GetRunnerInfo extends AppCompatActivity implements View.OnClickList
     Run run;
     int age;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +27,8 @@ public class GetRunnerInfo extends AppCompatActivity implements View.OnClickList
         maleButton = (RadioButton) findViewById(R.id.radioMale);
         femaleButton = (RadioButton) findViewById(R.id.radioFemale);
         ageView = (TextView) findViewById(R.id.ageView);
+
+
 
         run = ((Run) getApplicationContext());
         runnerContinueButton = (Button) findViewById(R.id.runnerContinue);
