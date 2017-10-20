@@ -1,3 +1,7 @@
+/*
+Activity gets runner information which is used to select appropriate target time IAW AFI 36-2905
+ */
+
 package timsthings.pacer;
 
 import android.content.Intent;
@@ -24,13 +28,16 @@ public class GetRunnerInfo extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_runner_info);
 
+        //Assign variables to screen views
         maleButton = (RadioButton) findViewById(R.id.radioMale);
         femaleButton = (RadioButton) findViewById(R.id.radioFemale);
         ageView = (TextView) findViewById(R.id.ageView);
 
 
-
+        // Enable access to Application 'Run' Object
         run = ((Run) getApplicationContext());
+
+        // Assign button to view and assign click listener
         runnerContinueButton = (Button) findViewById(R.id.runnerContinue);
         runnerContinueButton.setOnClickListener(this);
     }
@@ -41,6 +48,9 @@ public class GetRunnerInfo extends AppCompatActivity implements View.OnClickList
         switch (view.getId()){
 
             case R.id.runnerContinue:
+
+                // Determines male/female and age range. Selects appropriate target time
+                // IAW AFI 36-2905
 
                 if(validateRunner()) {
                     if (maleButton.isChecked())
@@ -63,6 +73,7 @@ public class GetRunnerInfo extends AppCompatActivity implements View.OnClickList
 
                     run.setTargetTime(targetTime);
 
+                    // Opens next screen (track info screen)
                     Intent intent = new Intent(this, GetTrackInfo.class);
                     startActivity(intent);
                 }
@@ -74,6 +85,7 @@ public class GetRunnerInfo extends AppCompatActivity implements View.OnClickList
 
     }
 
+    // Ensures value is entered in age field and a radio button is selected
     private boolean validateRunner(){
         return !(ageView.getText().toString().isEmpty())
                 && (maleButton.isChecked() || femaleButton.isChecked());

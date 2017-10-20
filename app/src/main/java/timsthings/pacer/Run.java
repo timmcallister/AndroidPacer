@@ -1,10 +1,13 @@
+/*
+    Application-wide Run object. Object stores run state, stores number of laps, target time,
+    partial first lap, and an array of cumulative lap times.
+ */
+
 package timsthings.pacer;
 
 import android.app.Application;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 /**
  * Created by tim on 9/15/17.
@@ -17,14 +20,17 @@ public class Run extends Application {
     private String targetTime;
     private ArrayList<Long> laps;
 
+    // Constructor for run object
     public Run() {
         this.laps = new ArrayList<>();
     }
 
+    // Add lap to Run object
     public void addLap(Long lap) {
         laps.add(lap);
     }
 
+    // Erases all lap data. Does not clear target time, number of laps, or partial lap
     public void resetRun() {
         laps.clear();
     }
@@ -83,6 +89,7 @@ public class Run extends Application {
         return sum / laps.size();
     }
 
+    // if first lap is partial, it must be ignored.
     public boolean isPartialLap() {
         return partialLap;
     }
@@ -91,19 +98,23 @@ public class Run extends Application {
         this.partialLap = partialLap;
     }
 
+    // Determine how many laps have been completed
     public int getCurrentLap() {
         return laps.size();
     }
 
+    // Determines number of laps that will be completed for prediction purposes.
     public void setRunLaps(double runLaps) {
 
         this.runLaps = runLaps;
     }
 
+    // Returns target time set by runner info screen
     public String getTargetTime() {
         return targetTime;
     }
 
+    // Runner info screen sets this value
     public void setTargetTime(String targetTime) {
         this.targetTime = targetTime;
     }

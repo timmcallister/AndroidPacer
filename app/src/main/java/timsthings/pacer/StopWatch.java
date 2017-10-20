@@ -1,3 +1,7 @@
+/*
+    Chronometer object use to get and display time.
+ */
+
 package timsthings.pacer;
 
 import android.content.Context;
@@ -15,8 +19,9 @@ public class StopWatch extends Chronometer {
 
     boolean isRunning = false;
     long timeWhenPaused = 0;
-    long totalTime = 0;
+    long totalTime = 0;                 // Cumulative time since started.
 
+    // Constructors
     public StopWatch(Context context) {
         super(context);
     }
@@ -29,10 +34,7 @@ public class StopWatch extends Chronometer {
         super(context, attrs, defStyleAttr);
     }
 
-    public StopWatch(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-    }
-
+    // Starts/restarts stopwatch counting, taking into account whether it was paused.
     @Override
     public void start() {
         setBase(SystemClock.elapsedRealtime() - timeWhenPaused);
@@ -40,6 +42,7 @@ public class StopWatch extends Chronometer {
         this.setRunning(true);
     }
 
+    // Stops stopwatch counting, records time when stopped.
     @Override
     public void stop() {
         super.stop();
@@ -47,6 +50,7 @@ public class StopWatch extends Chronometer {
         timeWhenPaused = SystemClock.elapsedRealtime() - getBase();
     }
 
+    // Erases paused time so clock will start at 0
     public void reset(){
         stop();
         this.setRunning(false);
@@ -54,26 +58,32 @@ public class StopWatch extends Chronometer {
         timeWhenPaused = 0;
     }
 
+    // Returns cumulative time since started
     public long getTotalTime(){
         return totalTime;
     }
 
+    // Adds lap time to cumulative time
     public void addLap(){
         totalTime += getTime();
     }
 
+    // Gets current time from stopwatch
     public long getTime(){
         return SystemClock.elapsedRealtime() - getBase();
     }
 
+    // Determine whether stopwatch is running
     public Boolean getRunning() {
         return isRunning;
     }
 
+    // Sets running value
     public void setRunning(Boolean running) {
         isRunning = running;
     }
 
+    // Sets cumulative value (used for resetting clock)
     public void setTotalTime(long time){
         this.totalTime = time;
     }

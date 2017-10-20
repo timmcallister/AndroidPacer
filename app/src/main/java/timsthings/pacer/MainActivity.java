@@ -1,3 +1,7 @@
+/*
+    First screen, mainly serves to warn members not to use the application during an official test
+ */
+
 package timsthings.pacer;
 
 import android.content.Intent;
@@ -25,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()){
 
             case R.id.mainContinue:
+
+                // Open next screen (Runner info screen)
                 Intent intent = new Intent(this, GetRunnerInfo.class);
                 startActivity(intent);
                 break;
